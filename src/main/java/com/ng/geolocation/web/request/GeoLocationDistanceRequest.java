@@ -8,18 +8,6 @@ public class GeoLocationDistanceRequest {
     private double toLongitude;
     private String locationName;
 
-    public GeoLocationDistanceRequest(double fromLatitude, double fromLongitude, double toLatitude, double toLongitude) {
-        this.fromLatitude = fromLatitude;
-        this.fromLongitude = fromLongitude;
-        this.toLatitude = toLatitude;
-        this.toLongitude = toLongitude;
-    }
-
-    public GeoLocationDistanceRequest(double fromLatitude, double fromLongitude, double toLatitude, double toLongitude, String locationName) {
-        this(fromLatitude, fromLongitude, toLatitude, toLongitude);
-        this.locationName = locationName;
-    }
-
     public double getFromLatitude() {
         return fromLatitude;
     }

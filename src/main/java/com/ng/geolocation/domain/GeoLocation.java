@@ -1,6 +1,7 @@
 package com.ng.geolocation.domain;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 public class GeoLocation implements Serializable {
 
@@ -9,16 +10,13 @@ public class GeoLocation implements Serializable {
     private double latitude;
     private double longitude;
     private String locationName;
+    private UUID locationId;
 
     public GeoLocation(final double latitude, final double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
+        this.locationId = UUID.randomUUID();
     }
-
-    /*public GeoLocation(final double latitude, final double longitude, final String locationName) {
-        this(latitude, longitude);
-        this.locationName = locationName;
-    }*/
 
     public double getLatitude() {
         return latitude;
@@ -42,5 +40,19 @@ public class GeoLocation implements Serializable {
 
     public void setLocationName(String locationName) {
         this.locationName = locationName;
+    }
+
+    public UUID getLocationId() {
+        return locationId;
+    }
+
+    @Override
+    public String toString() {
+        return "GeoLocation{" +
+                "latitude=" + latitude +
+                ", longitude=" + longitude +
+                ", locationName='" + locationName + '\'' +
+                ", locationId=" + locationId +
+                '}';
     }
 }

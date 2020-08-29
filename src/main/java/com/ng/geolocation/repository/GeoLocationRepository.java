@@ -1,22 +1,13 @@
 package com.ng.geolocation.repository;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import com.ng.geolocation.domain.GeoLocation;
-import org.springframework.stereotype.Repository;
 
-@Repository
-public class GeoLocationRepository {
+import java.util.List;
+import java.util.UUID;
 
-    private final List<GeoLocation> geolocations = new ArrayList<GeoLocation>();
+public interface GeoLocationRepository {
 
-    public void addGeoLocation(final GeoLocation geolocation) {
-        geolocations.add(geolocation);
-    }
-
-    public List<GeoLocation> getGeoLocations() {
-        return Collections.unmodifiableList(geolocations);
-    }
+    public void addGeoLocation(final UUID locationId, final GeoLocation geolocation);
+    public List<GeoLocation> getGeoLocations();
+    public GeoLocation findById(UUID locationId);
 }

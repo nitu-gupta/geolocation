@@ -9,6 +9,7 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+//TODO Create better unit tests using mocks with Mokito
 public class GeoLocationRepositoryTest {
 
     private static GeoLocationRepository repository;

@@ -3,25 +3,25 @@ package com.ng.geolocation.web.request;
 import java.util.UUID;
 
 /**
- * Simple value object used to define and provide access to request parameters for the /distanceByLocation enpoint
+ * Simple value object used to define and provide access to request parameters for the /distanceByLocation endpoint
  */
 public class GeoLocationDistanceByLocationRequest {
-    private UUID fromLocationId;
-    private UUID toLocationId;
+    private UUID fromGeoLocationId;
+    private UUID toGeoLocationId;
 
-    public UUID getFromLocationId() {
-        return fromLocationId;
+    public UUID getFromGeoLocationId() {
+        return fromGeoLocationId;
     }
 
-    public void setFromLocationId(UUID fromLocationId) {
-        this.fromLocationId = fromLocationId;
+    public void setFromGeoLocationId(UUID fromGeoLocationId) {
+        this.fromGeoLocationId = fromGeoLocationId;
     }
 
-    public UUID getToLocationId() {
-        return toLocationId;
+    public UUID getToGeoLocationId() {
+        return toGeoLocationId;
     }
 
-    public void setToLocationId(UUID toLocationId) {
-        this.toLocationId = toLocationId;
+    public void setToGeoLocationId(UUID toLocationId) {
+        this.toGeoLocationId = toGeoLocationId;
     }
 }

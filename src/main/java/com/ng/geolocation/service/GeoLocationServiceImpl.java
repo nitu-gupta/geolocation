@@ -12,28 +12,50 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
+//TODO Think about exception handling and logging
+
 @Service
 public class GeoLocationServiceImpl implements GeoLocationService {
 
     @Autowired
     private GeoLocationRepository repository;
 
+    /**
+     * Create a new GeoLocation and add it to the repository
+     * @param geolocation
+     * @return the geoLocationId created
+     */
     @Override
-    public GeoLocation create(final GeoLocation geolocation) {
-        repository.addGeoLocation(geolocation.getLocationId(), geolocation);
-        return geolocation;
+    public UUID create(final GeoLocation geolocation) {
+        repository.addGeoLocation(geolocation.getGeoLocationId(), geolocation);
+        return geolocation.getGeoLocationId();
     }
 
+    /**
+     * Retrieve all GeoLocations from the repository
+     * @return a List of GeoLocations
+     */
     @Override
     public List<GeoLocation> findAll() {
         return repository.getGeoLocations();
     }
 
+    /**
+     * Retrieve all GeoLocations from the repository
+     * @return a List of GeoLocations
+     */
     @Override
-    public GeoLocation findById(final UUID locationId) {
-        return repository.findById(locationId);
+    public GeoLocation findById(final UUID geoLocationId) {
+        return repository.findById(geoLocationId);
     }
 
+    /**
+     * Calcualte the distance from one geolocation to another
+     *
+     * @param fromGeoLocation
+     * @param toGeoLocation
+     * @return the distance between the two geolocations
+     */
     @Override
     public double getDistance(final GeoLocation fromGeoLocation, final GeoLocation toGeoLocation) {
         double fromLatitude = fromGeoLocation.getLatitude();
@@ -47,10 +69,17 @@ public class GeoLocationServiceImpl implements GeoLocationService {
         return new BigDecimal(distance,mathContext).doubleValue();
     }
 
+    /**
+     * Calcuate the distance between two geolocations stored in the repository
+     *
+     * @param fromGeoLocationId
+     * @param toGeoLocationId
+     * @return the distance between the two geolocations
+     */
     @Override
-    public double getDistanceByLocation(final UUID fromLocationId, final UUID toLocationId) {
-        final GeoLocation fromLocation = repository.findById(fromLocationId);
-        final GeoLocation toLocation = repository.findById(toLocationId);
+    public double getDistanceByLocation(final UUID fromGeoLocationId, final UUID toGeoLocationId) {
+        final GeoLocation fromLocation = repository.findById(fromGeoLocationId);
+        final GeoLocation toLocation = repository.findById(toGeoLocationId);
 
         return getDistance(fromLocation, toLocation);
 

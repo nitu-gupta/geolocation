@@ -1,5 +1,8 @@
 package com.ng.geolocation.web.request;
 
+/**
+ * Simple value object used to define and provide access to request parameters for the /distance endpoint
+ */
 public class GeoLocationDistanceRequest {
 
     private double fromLatitude;

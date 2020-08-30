@@ -5,30 +5,38 @@ import java.util.*;
 import com.ng.geolocation.domain.GeoLocation;
 import org.springframework.stereotype.Repository;
 
+/**
+ * Repository implementation to provde access to the GeoLocation in memory Map.
+ * TODO Think about exception handling and logging
+ */
 @Repository
 public class GeoLocationRepositoryInMemoryImpl implements GeoLocationRepository {
 
-    /*private final List<GeoLocation> geolocations = new ArrayList<GeoLocation>();
-
-    public void addGeoLocation(final GeoLocation geolocation) {
-        geolocations.add(geolocation);
-    }
-
-    public List<GeoLocation> getGeoLocations() {
-        return Collections.unmodifiableList(geolocations);
-    }*/
-
     private final Map<UUID, GeoLocation> geolocations = new HashMap<>();
 
-    public void addGeoLocation(final UUID locationId, final GeoLocation geolocation) {
-        geolocations.put(locationId, geolocation);
+    /**
+     * Add a GeoLocation to the repository
+     * @param geoLocationId
+     * @param geolocation
+     */
+    public void addGeoLocation(final UUID geoLocationId, final GeoLocation geolocation) {
+        geolocations.put(geoLocationId, geolocation);
     }
 
+    /**
+     * Retrive all GeoLocations in the repository
+     * @return a List of GeoLocations
+     */
     public List<GeoLocation> getGeoLocations() {
         return new ArrayList(geolocations.values());
     }
 
-    public GeoLocation findById(UUID locationId) {
-        return geolocations.get(locationId);
+    /**
+     * Retrive a GeoLocation using it's locationId
+     * @param geoLocationId
+     * @return a GeoLocation object
+     */
+    public GeoLocation findById(final UUID geoLocationId) {
+        return geolocations.get(geoLocationId);
     }
 }

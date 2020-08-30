@@ -3,19 +3,22 @@ package com.ng.geolocation.domain;
 import java.io.Serializable;
 import java.util.UUID;
 
+/**
+ * POJO representing the GeoLocation domain object.
+ */
 public class GeoLocation implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    private UUID geoLocationId;
+    private String locationName;
     private double latitude;
     private double longitude;
-    private String locationName;
-    private UUID locationId;
 
     public GeoLocation(final double latitude, final double longitude) {
+        this.geoLocationId = UUID.randomUUID(); //@TODO move creation of this to the repository
         this.latitude = latitude;
         this.longitude = longitude;
-        this.locationId = UUID.randomUUID();
     }
 
     public double getLatitude() {
@@ -42,17 +45,17 @@ public class GeoLocation implements Serializable {
         this.locationName = locationName;
     }
 
-    public UUID getLocationId() {
-        return locationId;
+    public UUID getGeoLocationId() {
+        return geoLocationId;
     }
 
     @Override
     public String toString() {
         return "GeoLocation{" +
-                "latitude=" + latitude +
+                "geoLocationId=" + geoLocationId +
+                ", locationName='" + locationName +
+                ", latitude=" + latitude +
                 ", longitude=" + longitude +
-                ", locationName='" + locationName + '\'' +
-                ", locationId=" + locationId +
                 '}';
     }
 }

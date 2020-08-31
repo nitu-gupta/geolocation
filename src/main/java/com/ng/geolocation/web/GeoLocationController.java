@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.UUID;
 
 //TODO Think about exception handling and logging
+//TODO Implement a DELETE method to delete a geolocation from the repository
+//TODO Create API documentation using OAS 3.0
 
 @RestController
 @RequestMapping("/geolocation")

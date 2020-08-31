@@ -22,7 +22,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.doReturn;
 
 //TODO Create better unit tests using mocks with Mokito
-//TODO Create unit tests for Controller
 public class GeoLocationServiceImplTest {
 
     @Autowired

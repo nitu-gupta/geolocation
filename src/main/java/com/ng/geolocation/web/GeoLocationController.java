@@ -24,6 +24,9 @@ public class GeoLocationController {
      * Create a new GeoLocation and add it to the repository
      * @param geolocation
      * @return the geoLocationId created
+     *
+     * Sample request
+     *  curl -H "Content-Type: application/json" -X POST -d'{"latitude": 51.5073, "longitude": -0.1277, "locationName":"Home"}' http://localhost:8080/geolocation
      */
     @RequestMapping(method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
     public UUID create(@RequestBody GeoLocation geolocation) {
@@ -33,6 +36,10 @@ public class GeoLocationController {
     /**
      * Retrieve all GeoLocations from the repository
      * @return a List of GeoLocations
+     *
+     * Sample request
+     * curl http://localhost:8080/geolocation
+     *
      * TODO Returning the GeoLocation domain model here tightly couples the domain with the HTTP Response.  Refactor HTTP Response into a new object.
      */
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
@@ -45,6 +52,9 @@ public class GeoLocationController {
      * @param locationId
      * @return the geolocation from the repository
      *
+     * Sample request (replace UUID
+     * curl http://localhost:8080/geolocation/{50352911-61e9-4700-96a1-4cc325098b48}
+     *
      * TODO Returning the GeoLocation domain model here tightly couples the domain with the HTTP Response.  Refactor HTTP Response into a new object.
      */
     @RequestMapping(value = "/{locationId}", method = RequestMethod.GET, produces = "application/json")
@@ -56,6 +66,9 @@ public class GeoLocationController {
      * Calcualte the distance from one geolocation to another
      * @param distanceRequest
      * @return the distance in miles
+     *
+     * Sample request
+     *  curl -H "Content-Type: application/json" -X GET -d'{"fromLatitude": 51.5073, "fromLongitude": -0.1277, "toLatitude": 53.4793, "toLongitude": -2.2479}' http://localhost:8080/geolocation/distance
      */
     @RequestMapping(value = "/distance", method = RequestMethod.GET, produces = "application/json")
     public double getDistance(@RequestBody GeoLocationDistanceRequest distanceRequest) {
@@ -68,6 +81,9 @@ public class GeoLocationController {
      * Calcuate the distance between two geolocations stored in the repository
      * @param distanceByLocationRequest
      * @return the distance in miles
+     *
+     * Sample request (replace UUID)
+     * curl -H "Content-Type: application/json" -X GET -d'{"fromGeoLocationId": "50352911-61e9-4700-96a1-4cc325098b48", "toGeoLocationId": "b9da367c-7eda-4189-9f53-fa6314bc86c0"}' http://localhost:8080/geolocation/distanceByLocation
      */
     @RequestMapping(value = "/distanceByLocation", method = RequestMethod.GET, produces = "application/json")
     public double getDistanceByLocation(@RequestBody GeoLocationDistanceByLocationRequest distanceByLocationRequest) {

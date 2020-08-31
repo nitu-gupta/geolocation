@@ -21,7 +21,7 @@ public class GeoLocationDistanceByLocationRequest {
         return toGeoLocationId;
     }
 
-    public void setToGeoLocationId(UUID toLocationId) {
+    public void setToGeoLocationId(UUID toGeoLocationId) {
         this.toGeoLocationId = toGeoLocationId;
     }
 }
